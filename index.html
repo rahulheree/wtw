@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whytoworry | De-Risking Innovation</title>
+    <meta name="description" content="Strategic market validation for founders who want to win.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@100;300;500;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg: #080808;
+            --accent: #d4ff3f; 
+            --surface: #121212;
+            --text: #ffffff;
+            --text-dim: #a1a1aa;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            cursor: none; 
+        }
+
+        .font-heading { font-family: 'Outfit', sans-serif; }
+
+        /* Custom Cursor */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        /* Brutalist Shadows & Borders */
+        .brutal-card {
+            background: var(--surface);
+            border: 1px solid #222;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .brutal-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        /* Marquee Effect */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+        }
+        .marquee-content {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        /* Noise Texture Overlay */
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            content: "";
+            opacity: 0.03;
+            z-index: 9000;
+            pointer-events: none;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            #cursor { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[100] px-6 py-8 mix-blend-difference">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-black tracking-tighter uppercase font-heading text-white">
+                whytoworry<span class="text-[var(--accent)]">.</span>
+            </a>
+            <div class="flex items-center gap-8">
+                <a href="#about" class="hidden md:block text-xs uppercase tracking-widest font-bold hover:text-[var(--accent)] transition-colors">Who We Are</a>
+                <a href="#services" class="hidden md:block text-xs uppercase tracking-widest font-bold hover:text-[var(--accent)] transition-colors">Services</a>
+                <a href="#contact" class="px-5 py-2 bg-white text-black text-xs font-black uppercase tracking-widest hover:bg-[var(--accent)] transition-all">
+                    Start Project
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center px-6 relative pt-20">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="reveal active">
+                <h1 class="text-[clamp(3rem,12vw,10rem)] leading-[0.85] font-black uppercase font-heading tracking-tighter italic">
+                    Stop <span class="text-[var(--accent)]">Guessing</span>.<br>
+                    Start <span class="not-italic">Winning</span>.
+                </h1>
+            </div>
+            
+            <div class="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-8 reveal active" style="transition-delay: 200ms;">
+                <p class="max-w-md text-zinc-400 text-lg leading-tight">
+                    Empowering startups and brands to de-risk innovation and accelerate market entry with data-driven strategies.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#contact" class="group flex items-center gap-3 text-sm uppercase font-bold tracking-widest">
+                        <span class="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center group-hover:bg-[var(--accent)] group-hover:border-[var(--accent)] group-hover:text-black transition-all">
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </span>
+                        Book a Call
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Big Scrolling Marquee -->
+        <div class="absolute bottom-10 left-0 w-full overflow-hidden opacity-10 pointer-events-none">
+            <div class="marquee-container text-[15vh] font-black uppercase font-heading whitespace-nowrap italic">
+                <div class="marquee-content">
+                    VALIDATE • LAUNCH • SCALE • DE-RISK • VALIDATE • LAUNCH • SCALE • DE-RISK •&nbsp;
+                </div>
+                <div class="marquee-content">
+                    VALIDATE • LAUNCH • SCALE • DE-RISK • VALIDATE • LAUNCH • SCALE • DE-RISK •&nbsp;
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section id="about" class="py-32 px-6 bg-zinc-900/20">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-5xl font-black uppercase font-heading italic mb-8">Who We Are</h2>
+                <div class="w-20 h-1 bg-[var(--accent)] mb-8"></div>
+                <p class="text-2xl text-white leading-snug font-light">
+                    At <span class="text-[var(--accent)] font-bold">whytoworry</span>, we are a collective of strategists, researchers, and market experts dedicated to transforming bold ideas into successful ventures.
+                </p>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms;">
+                <p class="text-zinc-400 text-lg leading-relaxed">
+                    We bridge the gap between concept and customer, providing the critical insights and strategic frameworks needed to navigate the complexities of modern business. Our mission is to be the catalyst for your growth, ensuring every decision is informed, every move is strategic, and every launch is a success.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 reveal">
+                <h2 class="text-5xl font-black uppercase font-heading italic mb-4">Our Core Services</h2>
+                <p class="text-zinc-500 uppercase tracking-widest text-xs font-bold">Everything you need to validate and grow your business.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Merged Service 1: Market Intel & Validation -->
+                <div class="brutal-card p-10 reveal">
+                    <i data-lucide="search-check" class="w-10 h-10 text-[var(--accent)] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Intel & Validation</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">Deep-dive market analysis combined with real-world user feedback loops to ensure bulletproof product-market fit before heavy investment.</p>
+                </div>
+                <!-- Service 2: Product Design & Tech Support -->
+                <div class="brutal-card p-10 reveal border-[var(--accent)]">
+                    <i data-lucide="code-2" class="w-10 h-10 text-[var(--accent)] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Design & Tech Support</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">Full-stack solutions: UI/UX, backend architecture, system design, cloud services, and AI/ML integration with robust DevOps support.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="brutal-card p-10 reveal">
+                    <i data-lucide="rocket" class="w-10 h-10 text-[var(--accent)] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Go-to-Market Strategy</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">From pricing to positioning and promotion, we build a comprehensive roadmap for a powerful and successful launch.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="brutal-card p-10 reveal">
+                    <i data-lucide="building-2" class="w-10 h-10 text-[var(--accent)] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Business Setup Advisory</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">Navigating legal, financial, and operational setup. We make sure your business is built on a solid foundation.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="brutal-card p-10 reveal">
+                    <i data-lucide="handshake" class="w-10 h-10 text-[var(--accent)] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Investor Matchmaking</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">We connect you with the right VCs and angel investors from our curated network who believe in your vision.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="brutal-card p-10 reveal">
+                    <i data-lucide="bar-chart-3" class="w-10 h-10 text-[var(--accent)] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Growth Hacking</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">Implement agile marketing tactics to rapidly grow your user base and market presence after launch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-start">
+            <div class="reveal sticky top-32">
+                <h2 class="text-7xl font-black uppercase font-heading italic leading-none mb-12">
+                    Let's <span class="text-[var(--accent)]">Build</span><br>What's Next.
+                </h2>
+                
+                <div class="space-y-12">
+                    <!-- Instagram Link -->
+                    <div class="flex flex-col gap-2 group">
+                        <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Social Connection</span>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="instagram" class="w-5 h-5 text-[var(--accent)]"></i>
+                            <a href="https://www.instagram.com/whytoworryyy/" target="_blank" class="text-sm font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-colors">@whytoworryyy</a>
+                        </div>
+                    </div>
+
+                    <!-- Email Block -->
+                    <div class="flex flex-col gap-2 group">
+                        <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Direct Transmission</span>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="mail" class="w-5 h-5 text-[var(--accent)]"></i>
+                            <a href="mailto:contactwhytoworryteam@gmail.com" class="text-sm font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-colors">contactwhytoworryteam@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="brutal-card p-10 reveal">
+                <h3 class="text-3xl font-black uppercase font-heading italic mb-10 text-white">Send us a Message</h3>
+                <form action="https://formspree.io/f/xldlbjeo" method="POST" class="space-y-8">
+                    <div class="group border-b border-zinc-800 focus-within:border-[var(--accent)] transition-colors py-4">
+                        <label class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold block mb-2">Full Name</label>
+                        <input type="text" name="name" required class="w-full bg-transparent text-xl focus:outline-none placeholder-zinc-900 text-white" placeholder="Type here...">
+                    </div>
+                    <div class="group border-b border-zinc-800 focus-within:border-[var(--accent)] transition-colors py-4">
+                        <label class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold block mb-2">Email Address</label>
+                        <input type="email" name="email" required class="w-full bg-transparent text-xl focus:outline-none placeholder-zinc-900 text-white" placeholder="name@domain.com">
+                    </div>
+                    <div class="group border-b border-zinc-800 focus-within:border-[var(--accent)] transition-colors py-4">
+                        <label class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold block mb-2">Message</label>
+                        <textarea name="message" rows="4" required class="w-full bg-transparent text-xl focus:outline-none placeholder-zinc-900 text-white resize-none" placeholder="What's your vision?"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-6 bg-[var(--accent)] text-black font-black uppercase tracking-[0.2em] hover:bg-white transition-all transform active:scale-95">
+                        Submit Consultation Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-zinc-900 px-6 bg-black">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">
+            <div class="flex flex-col gap-2">
+                <span class="text-white text-lg font-black font-heading italic">whytoworry<span class="text-[var(--accent)]">.</span></span>
+                <span>© <span id="year"></span> All Rights Reserved.</span>
+            </div>
+            <div class="flex gap-8">
+                <a href="https://www.instagram.com/whytoworryyy/" target="_blank" class="hover:text-[var(--accent)] transition-colors">Instagram</a>
+                <a href="mailto:contactwhytoworryteam@gmail.com" class="hover:text-[var(--accent)] transition-colors">Email</a>
+            </div>
+            <div class="text-center md:text-right">
+                VALIDATE SMARTER.<br>LAUNCH FASTER.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // Custom Cursor Logic
+            const cursor = document.getElementById('cursor');
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // Interactive element cursor expansion
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(3)');
+                el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+            });
+
+            // Scroll-triggered reveal animations
+            const observerOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // Dynamic Year
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
